@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Bookwizard</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="../../public/CSS/style.css" rel="stylesheet" type="text/css" />
+
+    <script>
+        function del(_id) {
+            if (confirm("delete it or no?")) {
+                window.location.href = "../controller/delete.php?conn_id=" + _id;
+            }
+        }
+        function add() {
+            window.location.href = "../controller/readtimelist.php?target=add";
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <div class="container">
+        <div class="row">
+            <img src="../../public/img/logo.png" width="477" height="83" alt="" />
+        </div>
+
+        <div class="row">
+            <div class="col-8 col-sm-6">
+                <nav class="navbar navbar-expand-md">
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../default.html">HomePage</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../controller/readtimelist.php?target=show">BookList</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Administrator</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-9">
+                <div id="booklist" class="artistinfo">select book to delete or add a book &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-outline-secondary" onclick="add()">+ Add Record</button></div>
+                <br />
+                <table class='table table-hover'>
+                    <thead>
+                        <tr>
+                            <!---<th scope='col'>Edit</th>  echo "<td><img src='../../public/img/edit.png' class='img-fluid'></img></td>";--->
+                            <th scope='col'>Del</th>
+                            <th scope='col'>Time</th>
+                            <th scope='col'>BookName</th>
+                            <th scope='col'>BookAuther</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                             if($list != null)
+                              {
+                                  for($i= 0;$i< count($list);$i++){
+                                    echo "<tr>";
+                                    echo "<td><a href=\"javascript:del(".$list[$i]['ID'].")\"><img src='../../public/img/delete.png' class='img-fluid'></a></img></td>";
+                                    echo "<td>" . $list[$i]['content']."</td>";
+                                    echo "<td>" . $list[$i]['BookName']."</td>";
+                                    echo "<td>" . $list[$i]['BookAuther']."</td>";
+                                    echo "</tr>";
+                                 }
+                             }
+                             else
+                             {
+                                echo "<tr>";
+                                echo "<td>no book on the list</td>";
+                                echo "</tr>";
+                             }
+                         ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <br />
+    <br />
+
+</body>
+
+</html>
