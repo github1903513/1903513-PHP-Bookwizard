@@ -5,6 +5,6 @@ this is homepage.
 This is booklist page.
 ![image](https://github.com/github1903513/1903513-PHP-Bookwizard/blob/main/public/img/booklist.png)
 This is administrator's login page.
-![image](ttps://github.com/github1903513/1903513-PHP-Bookwizard/blob/main/public/img/admin.png)
+![image](https://github.com/github1903513/1903513-PHP-Bookwizard/blob/main/public/img/admin.png)
 This is add book info page.
 ![image](https://github.com/github1903513/1903513-PHP-Bookwizard/blob/main/public/img/add.png)
